@@ -1,0 +1,10 @@
+h1 {
+    background: #c845a2;
+    background: linear-gradient(to right, #ffa9e5 0%, #b9238c 50%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body {
+    background-color: black;
+}
