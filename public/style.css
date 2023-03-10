@@ -1,10 +1,97 @@
-h1 {
-    background: #c845a2;
-    background: linear-gradient(to right, #ffa9e5 0%, #b9238c 50%);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Prosto+One&display=swap');
+
+.svg-icon {
+    width: 3em;
+    height: 3em;
+  }
+  
+.svg-icon path, .svg-icon polygon, .svg-icon rect {
+    fill:#ffa9e5;
+}
+  
+.svg-icon circle {
+    stroke:#ffa9e5;
+    stroke-width: 1;
 }
 
 body {
     background-color: black;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, #ffa9e5 0%, #b9238c 66%) !important;
+}
+
+.titre-header {
+    background-image: linear-gradient(to right, #ffa9e5 0%, #b9238c 33%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    letter-spacing: 1em;
+    padding-top: 10px;
+    margin-left: 50px;
+    font-size: 2em;
+    font-family: 'Press Start 2P', cursive;
+}
+
+input[type="text"] {
+    border-style: none;
+    color: #f0f0f0;
+    font-size: 1.2em;
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 2px solid #414141;
+    outline: #000;
+    width: max-content;
+}
+
+input[type="text"]:focus {
+    border: 2px solid #f0f0f0!important;
+}
+
+button[type="submit"] {
+    border: none;
+    background-color: #000;
+    color: #f0f0f0;
+    margin: 5px;
+}
+
+button[type="submit"] i {
+    color: #f0f0f0;
+    font-size: 24px;
+    transition: ease-out 0.2s;
+
+}
+
+button[type="submit"]:hover i {
+    color: #b9238c;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+li {
+    display: inline;
+    font-size: 1em;
+    font-family: 'Prosto One';
+    
+}
+
+li a {
+    padding: 10px 50px;
+    color: #f0f0f0;
+    text-decoration: none;
+    border: 2px solid #000;
+    transition: ease-out 0.2s;
+}
+
+li a:hover {
+    color: #f0f0f0;
+    text-decoration: none;
+    border: 2px solid #414141!important;
 }
