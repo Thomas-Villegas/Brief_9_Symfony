@@ -45,6 +45,7 @@ input[type="text"] {
     border: 2px solid #414141;
     outline: #000;
     width: max-content;
+    margin-right: 15px;
 }
 
 input[type="text"]:focus {
