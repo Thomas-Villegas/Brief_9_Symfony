@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administrateur{% endblock %}
+
+{% block body %}
+    {% include 'header.html.twig' %}
+    {% if app.user %}
+        <h1>Admin Page</h1>
+        <p>Bienvenue {{ app.user.username }} !</p>
+        <p>Vous êtes connecté en tant qu'administrateur.</p>
+        <p><a href="{{ path('app_logout') }}">Déconnexion</a></p>
+    {% else %}
+        <h1>Admin Page</h1>
+        <p>Vous n'êtes pas connecté en tant qu'administrateur.</p>
+        <p><a href="{{ path('app_login') }}">Connexion</a></p>
+    {% endif %}
+{% endblock %}

@@ -14,6 +14,14 @@
     stroke-width: 1;
 }
 
+.test {
+    background-color: #000;
+    border: 2px solid #414141;
+    width: 90vw;
+    height: 66vh;
+    margin: 0 auto;
+}
+
 body {
     background-color: black;
 }
@@ -49,7 +57,7 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-    border: 2px solid #f0f0f0!important;
+    border: 2px solid #f0f0f0 !important;
 }
 
 button[type="submit"] {
@@ -70,20 +78,20 @@ button[type="submit"]:hover i {
     color: #b9238c;
 }
 
-ul {
+.navbar-header {
     list-style-type: none;
     display: flex;
     justify-content: space-evenly;
 }
 
-li {
+.navbar-header li {
     display: inline;
     font-size: 1em;
-    font-family: 'Prosto One';
+    font-family: 'Prosto One', cursive;
     
 }
 
-li a {
+.navbar-header li a {
     padding: 10px 50px;
     color: #f0f0f0;
     text-decoration: none;
@@ -91,8 +99,105 @@ li a {
     transition: ease-out 0.2s;
 }
 
-li a:hover {
+.navbar-header li a:hover {
     color: #f0f0f0;
     text-decoration: none;
-    border: 2px solid #414141!important;
+    border: 2px solid #414141 !important;
+}
+
+.navbar-header li a:active {
+    color: #f0f0f0;
+    text-decoration: none;
+    border: 2px solid #414141 !important;
+}
+
+.navbar-header li a:visited {
+    color: #f0f0f0;
+}
+
+.titre-footer {
+    background-image: linear-gradient(to right, #ffa9e5 0%, #b9238c 33%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    margin-bottom: 10px;
+    letter-spacing: 0.3em;
+    padding-top: 10px;
+    font-size: 1em;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.texte-footer {
+    color: #f0f0f0;
+    font-size: 0.8em;
+    font-family: 'Prosto One' cursive;
+    margin: 0;
+    margin-bottom: 10px;
+    letter-spacing: 0.3em;
+
+}
+
+footer {
+    text-align: center;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer li {
+    font-size: 0.8em;
+    font-family: 'Prosto One', cursive;
+    margin: 12px;
+}
+
+footer li a {
+    color: #f0f0f0;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 2px solid #000;
+    transition: ease-out 0.2s;
+}
+
+footer li a:hover {
+    color: #ffa9e5;
+    text-decoration: none;
+    border: 2px solid #414141 !important;
+}
+
+footer li a:active {
+    color: #f0f0f0;
+    text-decoration: none;
+    border: 2px solid #414141 !important;
+}
+
+input[type="submit"] {
+    border: none;
+    background-color: #000;
+    color: #f0f0f0;
+    margin: 5px;
+    border: 2px solid #414141 !important;
+    transition: ease-out 0.2s;
+    padding: 5px 10px;
+}
+
+input[type="submit"]:hover {
+    color: #ffa9e5;
+    border: 2px solid #f0f0f0 !important;
+}
+
+input[type="email"] {
+    border-style: none;
+    color: #f0f0f0;
+    font-size: 1em;
+    padding: 5px 10px;
+    background-color: transparent;
+    border: 2px solid #414141;
+    outline: #000;
+    width: max-content;
+}
+
+input[type="email"]:focus {
+    border: 2px solid #f0f0f0 !important;
 }
