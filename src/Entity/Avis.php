@@ -3,20 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\AvisRepository;
-<<<<<<< HEAD
-use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Entity(repositoryClass="App\Repository\AvisRepository")
- */
-=======
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AvisRepository::class)]
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
 class Avis
 {
     #[ORM\Id]
@@ -24,16 +15,6 @@ class Avis
     #[ORM\Column]
     private ?int $id = null;
 
-<<<<<<< HEAD
-    #[ORM\Column(type: Types::DECIMAL, precision: 2, scale: 1)]
-    private ?string $note = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $commentaire = null;
-
-    #[ORM\Column]
-    private ?bool $moderation = null;
-=======
     #[ORM\Column(length: 255)]
     private ?string $NomUtilsateur = null;
 
@@ -57,23 +38,12 @@ class Avis
         $this->Jeux = new ArrayCollection();
         $this->Utilisateur = new ArrayCollection();
     }
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-<<<<<<< HEAD
-    public function getNote(): ?string
-    {
-        return $this->note;
-    }
-
-    public function setNote(string $note): self
-    {
-        $this->note = $note;
-=======
     public function getNomUtilsateur(): ?string
     {
         return $this->NomUtilsateur;
@@ -94,66 +64,35 @@ class Avis
     public function setNote(int $Note): self
     {
         $this->Note = $Note;
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
 
         return $this;
     }
 
     public function getCommentaire(): ?string
     {
-<<<<<<< HEAD
-        return $this->commentaire;
-    }
-
-    public function setCommentaire(string $commentaire): self
-    {
-        $this->commentaire = $commentaire;
-=======
         return $this->Commentaire;
     }
 
     public function setCommentaire(string $Commentaire): self
     {
         $this->Commentaire = $Commentaire;
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
 
         return $this;
     }
 
     public function isModeration(): ?bool
     {
-<<<<<<< HEAD
-        return $this->moderation;
-    }
-
-    public function setModeration(bool $moderation): self
-    {
-        $this->moderation = $moderation;
-=======
         return $this->Moderation;
     }
 
     public function setModeration(bool $Moderation): self
     {
         $this->Moderation = $Moderation;
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
 
         return $this;
     }
 
     /**
-<<<<<<< HEAD
-     * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateur", inversedBy="avis")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $utilisateur;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Jeux", inversedBy="avis")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $jeux;
-=======
      * @return Collection<int, Jeux>
      */
     public function getJeux(): Collection
@@ -212,5 +151,4 @@ class Avis
 
         return $this;
     }
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
 }
