@@ -1,3 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
 <div class="container p-0 mt-3 mw-100">
     <div class="row m-0">
         <div class="col-8 p-0 pl-4 d-flex align-items-center">
@@ -16,19 +21,45 @@
                 <h1 class="titre-header animate__animated animate__fadeInDown">WikiJòcs</h1>
             </a>
         </div>
-        <div class="col-4 p-0 pr-4 d-flex align-items-center justify-content-end">
-            <form action="#">
-                <input type="text" class="input-search animate__animated animate__fadeInRight" placeholder="Recherche...">
-                <button type="submit" class="btn-search animate__animated animate__zoomIn "><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
-            <!-- on met une condition pour savoir si l'utilisateur est connecté ou non afin de lui afficher le bon bouton avec le langage twig -->
-
-            {% if is_granted('ROLE_USER') %}
-                <a href="{{ asset('/logout') }}"><button type="button" class="btn-login animate__animated animate__zoomIn"><i class="fa-solid fa-sign-out"></i></button></a>
-            {% else %}
-                <a href="{{ asset('/connexion') }}"><button type="button" class="btn-login animate__animated animate__zoomIn"><i class="fa-solid fa-user"></i></button></a>
-            {% endif %}
-        </div>
     </div>
 </div>
 <hr class="hr-top">
+<h1 class="titre-inscription ml-5 animate__animated animate__fadeInUp">Inscription</h1>
+<section class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            {{ form_start(registrationForm) }}
+                <div class="m-3 animate__animated animate__fadeInDown anime-inscription">
+                    {{ form_row(registrationForm.email) }}
+                </div>
+                <div class="m-5 animate__animated animate__fadeInDown anime-inscription">
+                    {{ form_row(registrationForm.plainPassword, { label: 'Mot de passe' }) }}
+                </div>
+                <div class="d-flex justify-content-center animate__animated animate__fadeInDown anime-inscription mb-5">
+                    <button type="submit" class="btn-inscription">S'inscrire</button>
+                </div>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+</section>
+<footer class="footer-log animate-animated animate__fadeInDown mt-5">
+    <hr class="hr-bottom">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <h3 class="titre-footer">Newsletter</h3>
+                <p class="texte-footer">Souscrire à notre newsletter pour recevoir nos dernières actualités</p>
+                <form action="#" method="post">
+                    <input type="email" name="email" placeholder="Entrer votre email">
+                    <input type="submit" name="submit" value="Souscrire">
+                </form>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <p class="texte-footer">© 2023 - Tous droits réservés</p>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}

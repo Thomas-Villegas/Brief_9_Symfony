@@ -5,6 +5,25 @@
 {% block body %}
     {% include 'header.html.twig' %}
     {% include 'navbar.html.twig' %}
-    <div class="test"></div>
+    <div class="container mt-5">
+        {% for jeu in jeux %}
+            {% if loop.index == 1 or loop.index0 % 4 == 0 %}
+                <div class="row row-card animate__animated animate__fadeInUp">
+            {% endif %}
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4 animate__animated animate__fadeInUp">
+                <a href="{{ path('app_jeu', {'id': jeu.id}) }}" class="card-link">
+                    <div class="card h-100">
+                        <img class="card-img-top h-auto" src="images/{{ jeu.image }}" alt="{{ jeu.titre }}">
+                        <div class="card-body p-0">
+                            <h5 class="card-title m-0 text-center">{{ jeu.titre }}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% if loop.index0 % 4 == 3 or loop.last %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
     {% include 'footer.html.twig' %}
 {% endblock %}

@@ -39,20 +39,22 @@ class GenreRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Genre[] Returns an array of Genre objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('g')
-//            ->andWhere('g.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('g.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Genre[] Returns an array of Genre objects
+     */
+    public function findGenresByJeux($id) // je veux récupérer les genres d'un jeux en fonction de son id
+    {
+        return $this->createQueryBuilder('g')
+            ->innerJoin('g.jeux', 'j')
+            ->andWhere('j.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
+
+
 
 //    public function findOneBySomeField($value): ?Genre
 //    {

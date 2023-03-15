@@ -3,20 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\JeuxRepository;
-<<<<<<< HEAD
-use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Entity(repositoryClass="App\Repository\JeuxRepository")
- */
-=======
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\GenreRepository;
 
 #[ORM\Entity(repositoryClass: JeuxRepository::class)]
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
 class Jeux
 {
     #[ORM\Id]
@@ -25,50 +18,34 @@ class Jeux
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-<<<<<<< HEAD
     private ?string $titre = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $url = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(length: 255)]
+    private ?string $url = null;
+
+    #[ORM\Column(length: 255)]
     private ?string $image = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 2, scale: 1, nullable: true)]
-    private ?string $rating = null;
+    private ?string $note = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
-=======
-    private ?string $Titre = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $Url = null;
+    #[ORM\OneToMany(mappedBy: 'jeux', targetEntity: Avis::class)]
+    private Collection $avis;
 
-    #[ORM\Column(length: 255)]
-    private ?string $Description = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Image = null;
-
-    #[ORM\Column]
-    private ?int $Note = null;
-
-    #[ORM\ManyToMany(targetEntity: Genre::class, inversedBy: 'jeuxes')]
-    private Collection $Genre;
-
-    #[ORM\ManyToOne(inversedBy: 'Jeux')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Avis $avis = null;
+    #[ORM\ManyToMany(targetEntity: genre::class, inversedBy: 'jeuxes')]
+    private Collection $genre;
 
     public function __construct()
     {
-        $this->Genre = new ArrayCollection();
+        $this->avis = new ArrayCollection();
+        $this->genre = new ArrayCollection();
     }
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
 
     public function getId(): ?int
     {
@@ -77,97 +54,60 @@ class Jeux
 
     public function getTitre(): ?string
     {
-<<<<<<< HEAD
         return $this->titre;
     }
 
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
-=======
-        return $this->Titre;
-    }
-
-    public function setTitre(string $Titre): self
-    {
-        $this->Titre = $Titre;
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
-
-        return $this;
-    }
-
-    public function getUrl(): ?string
-    {
-<<<<<<< HEAD
-        return $this->url;
-    }
-
-    public function setUrl(string $url): self
-    {
-        $this->url = $url;
-=======
-        return $this->Url;
-    }
-
-    public function setUrl(string $Url): self
-    {
-        $this->Url = $Url;
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
 
         return $this;
     }
 
     public function getDescription(): ?string
     {
-<<<<<<< HEAD
         return $this->description;
     }
 
     public function setDescription(string $description): self
     {
         $this->description = $description;
-=======
-        return $this->Description;
+
+        return $this;
     }
 
-    public function setDescription(string $Description): self
+    public function getUrl(): ?string
     {
-        $this->Description = $Description;
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
+        return $this->url;
+    }
+
+    public function setUrl(string $url): self
+    {
+        $this->url = $url;
 
         return $this;
     }
 
     public function getImage(): ?string
     {
-<<<<<<< HEAD
         return $this->image;
     }
 
     public function setImage(string $image): self
     {
         $this->image = $image;
-=======
-        return $this->Image;
-    }
-
-    public function setImage(?string $Image): self
-    {
-        $this->Image = $Image;
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
 
         return $this;
     }
 
-<<<<<<< HEAD
-    public function getRating(): ?string
+    public function getNote(): ?string
     {
-        return $this->rating;
+        return $this->note;
     }
 
-    public function setRating(?string $rating): self
+    public function setNote(?string $note): self
     {
-        $this->rating = $rating;
+        $this->note = $note;
 
         return $this;
     }
@@ -180,71 +120,61 @@ class Jeux
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
-=======
-    public function getNote(): ?int
-    {
-        return $this->Note;
-    }
-
-    public function setNote(int $Note): self
-    {
-        $this->Note = $Note;
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
 
         return $this;
     }
 
     /**
-<<<<<<< HEAD
-     * @ORM\ManyToMany(targetEntity="App\Entity\Genre", inversedBy="jeux")
-     * @ORM\JoinTable(name="jeux_genres",
-     *                joinColumns={@ORM\JoinColumn(name="jeux_id", referencedColumnName="id")},
-     *                inverseJoinColumns={@ORM\JoinColumn(name="genre_id", referencedColumnName="id")})
-     * 
-     * @ORM\OneToMany(targetEntity="App\Entity\Avis", mappedBy="jeux")
-     * 
+     * @return Collection<int, Avis>
      */
-    private $avis;
-    private $genres;
-
-    public function __construct()
+    public function getAvis(): Collection
     {
-        $this->genres = new ArrayCollection();
-        $this->avis = new ArrayCollection();
-=======
-     * @return Collection<int, Genre>
-     */
-    public function getGenre(): Collection
-    {
-        return $this->Genre;
+        return $this->avis;
     }
 
-    public function addGenre(Genre $genre): self
+    public function addAvi(Avis $avi): self
     {
-        if (!$this->Genre->contains($genre)) {
-            $this->Genre->add($genre);
+        if (!$this->avis->contains($avi)) {
+            $this->avis->add($avi);
+            $avi->setJeux($this);
         }
 
         return $this;
     }
 
-    public function removeGenre(Genre $genre): self
+    public function removeAvi(Avis $avi): self
     {
-        $this->Genre->removeElement($genre);
+        if ($this->avis->removeElement($avi)) {
+            // set the owning side to null (unless already changed)
+            if ($avi->getJeux() === $this) {
+                $avi->setJeux(null);
+            }
+        }
 
         return $this;
     }
 
-    public function getAvis(): ?Avis
+    /**
+     * @return Collection<string, genre>
+     */
+    public function getGenreByJeux($id): Collection
     {
-        return $this->avis;
+        return $this->genre;
     }
 
-    public function setAvis(?Avis $avis): self
+    public function addGenre(genre $genre): self
     {
-        $this->avis = $avis;
+        if (!$this->genre->contains($genre)) {
+            $this->genre->add($genre);
+        }
 
         return $this;
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
+    }
+
+    public function removeGenre(genre $genre): self
+    {
+        $this->genre->removeElement($genre);
+
+        return $this;
     }
 }

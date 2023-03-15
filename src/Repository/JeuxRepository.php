@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Jeux;
+use App\Entity\Genre;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -39,20 +40,17 @@ class JeuxRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Jeux[] Returns an array of Jeux objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('j')
-//            ->andWhere('j.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('j.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    // je veux récupérer les genres d'un jeux en fonction de son id
+    /* public function findGenresByJeux($id)
+    {
+        return $this->createQueryBuilder('j')
+            ->innerJoin('j.genre', 'g')
+            ->andWhere('j.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult()
+        ;
+    } */
 
 //    public function findOneBySomeField($value): ?Jeux
 //    {

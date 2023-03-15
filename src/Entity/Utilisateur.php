@@ -3,164 +3,143 @@
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
-<<<<<<< HEAD
-use Doctrine\DBAL\Types\Types;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
+ * @UniqueEntity(fields={"email"}, message="Un compte existe déjà avec cette adresse email.")
  */
-=======
-use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
-class Utilisateur
+
+class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-<<<<<<< HEAD
-    private ?string $pseudo = null;
-
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column]
+    private array $roles = [];
+
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $role = null;
-=======
-    private ?string $Pseudo = null;
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Avis::class)]
+    private Collection $avis;
 
-    #[ORM\Column(length: 255)]
-    private ?string $Email = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $Password = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $Rôle = null;
-
-    #[ORM\ManyToOne(inversedBy: 'Utilisateur')]
-    private ?Avis $avis = null;
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
+    public function __construct()
+    {
+        $this->avis = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getPseudo(): ?string
-    {
-<<<<<<< HEAD
-        return $this->pseudo;
-    }
-
-    public function setPseudo(string $pseudo): self
-    {
-        $this->pseudo = $pseudo;
-=======
-        return $this->Pseudo;
-    }
-
-    public function setPseudo(string $Pseudo): self
-    {
-        $this->Pseudo = $Pseudo;
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
-
-        return $this;
-    }
-
     public function getEmail(): ?string
     {
-<<<<<<< HEAD
         return $this->email;
     }
 
     public function setEmail(string $email): self
     {
         $this->email = $email;
-=======
-        return $this->Email;
-    }
-
-    public function setEmail(string $Email): self
-    {
-        $this->Email = $Email;
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
 
         return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
     {
-<<<<<<< HEAD
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
+    {
         return $this->password;
     }
 
     public function setPassword(string $password): self
     {
         $this->password = $password;
-=======
-        return $this->Password;
-    }
-
-    public function setPassword(string $Password): self
-    {
-        $this->Password = $Password;
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
 
         return $this;
     }
 
-<<<<<<< HEAD
-    public function getRole(): ?int
-    {
-        return $this->role;
-    }
-
-    public function setRole(?int $role): self
-    {
-        $this->role = $role;
-=======
-    public function getRôle(): ?string
-    {
-        return $this->Rôle;
-    }
-
-    public function setRôle(string $Rôle): self
-    {
-        $this->Rôle = $Rôle;
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
-
-        return $this;
-    }
-
-<<<<<<< HEAD
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Avis", mappedBy="utilisateur")
+     * @see UserInterface
      */
-    private $avis;
-
-    public function __construct()
+    public function eraseCredentials()
     {
-        $this->avis = new ArrayCollection();
-=======
-    public function getAvis(): ?Avis
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, Avis>
+     */
+    public function getAvis(): Collection
     {
         return $this->avis;
     }
 
-    public function setAvis(?Avis $avis): self
+    public function addAvi(Avis $avi): self
     {
-        $this->avis = $avis;
+        if (!$this->avis->contains($avi)) {
+            $this->avis->add($avi);
+            $avi->setUser($this);
+        }
 
         return $this;
->>>>>>> 16a338933512e8622f2e044e0883715a42506308
+    }
+
+    public function removeAvi(Avis $avi): self
+    {
+        if ($this->avis->removeElement($avi)) {
+            // set the owning side to null (unless already changed)
+            if ($avi->getUser() === $this) {
+                $avi->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }
