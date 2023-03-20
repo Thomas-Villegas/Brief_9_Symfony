@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connecte-toi !{% endblock %}
+
+{% block body %}
+<div class="container p-0 mt-3 mw-100">
+    <div class="row m-0">
+        <div class="col-8 p-0 pl-4 d-flex align-items-center">
+            <svg class="svg-icon animate__animated animate__fadeInLeft" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 437.01 437.01" xml:space="preserve">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <g>
+                        <path d="M188.72,178.715h-59.57c-5.522,0-10,4.477-10,10v59.57c0,5.523,4.478,10,10,10h59.57c5.522,0,10-4.477,10-10v-59.57 C198.72,183.192,194.242,178.715,188.72,178.715z M178.72,238.285h-39.57v-39.57h39.57V238.285z"></path>
+                        <path d="M307.859,178.715H248.29c-5.522,0-10,4.477-10,10v59.57c0,5.523,4.478,10,10,10h59.569c5.522,0,10-4.477,10-10v-59.57 C317.859,183.192,313.382,178.715,307.859,178.715z M297.859,238.285H258.29v-39.57h39.569V238.285z"></path>
+                        <path d="M427.01,238.275h-49.57v-109.13c0-5.523-4.478-10-10-10h-49.58v-49.57c0-5.523-4.478-10-10-10h-178.71 c-5.522,0-10,4.477-10,10v49.57h-49.58c-5.522,0-10,4.477-10,10v109.13H10c-5.522,0-10,4.477-10,10v119.16c0,5.523,4.478,10,10,10 h59.569c5.522,0,10-4.477,10-10v-49.58h39.58v49.58c0,5.523,4.478,10,10,10h59.57c5.522,0,10-4.477,10-10v-49.58h39.57v49.58 c0,5.523,4.478,10,10,10h59.569c5.522,0,10-4.477,10-10v-49.58h39.58v49.58c0,5.523,4.478,10,10,10h59.57c5.522,0,10-4.477,10-10 v-119.16C437.01,242.752,432.532,238.275,427.01,238.275z M417.01,357.435h-39.57v-49.58c0-5.523-4.478-10-10-10h-59.58 c-5.522,0-10,4.477-10,10v49.58H258.29v-49.58c0-5.523-4.478-10-10-10h-59.57c-5.522,0-10,4.477-10,10v49.58h-39.57v-49.58 c0-5.523-4.478-10-10-10h-59.58c-5.522,0-10,4.477-10,10v49.58H20v-99.16h49.569c5.522,0,10-4.477,10-10v-109.13h49.58 c5.522,0,10-4.477,10-10v-49.57h158.71v49.57c0,5.523,4.478,10,10,10h49.58v109.13c0,5.523,4.478,10,10,10h49.57V357.435z"></path>
+                    </g>
+                </g>
+            </svg>
+            <a href="{{ asset('/') }}">
+                <h1 class="titre-header animate__animated animate__fadeInDown">WikiJòcs</h1>
+            </a>
+        </div>
+    </div>
+</div>
+<hr class="hr-top">
+
+<h1 class="titre-connexion ml-5 animate__animated animate__fadeInUp">Connecte-toi !</h1>
+<section class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" class="form-connexion">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        Vous êtes connecté {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+                    </div>
+                {% endif %}
+
+                <div class="m-3 anime-connexion animate__animated animate__fadeInDown">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control w-100" autocomplete="email" required autofocus>
+                </div>
+                <div class="m-5 anime-connexion animate__animated animate__fadeInDown">
+                    <label for="inputPassword">Mot de passe</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                    </label>
+                </div>
+                
+                <div class="d-flex justify-content-center anime-connexion animate__animated animate__fadeInDown mb-5">
+                    <button class="btn-connexion" type="submit">
+                        Me connecter
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<footer class="footer-log animate__animated animate__fadeInDown mt-5">
+    <hr class="hr-bottom">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <h3 class="titre-footer">Newsletter</h3>
+                <p class="texte-footer">Souscrire à notre newsletter pour recevoir nos dernières actualités</p>
+                <form action="#" method="post">
+                    <input type="email" name="email" placeholder="Entrer votre email">
+                    <input type="submit" name="submit" value="Souscrire">
+                </form>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <p class="texte-footer">© 2023 - Tous droits réservés</p>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}

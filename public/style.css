@@ -3,12 +3,12 @@
 .svg-icon {
     width: 3em;
     height: 3em;
-  }
-  
+}
+
 .svg-icon path, .svg-icon polygon, .svg-icon rect {
     fill:#ffa9e5;
 }
-  
+
 .svg-icon circle {
     stroke:#ffa9e5;
     stroke-width: 1;
@@ -18,13 +18,12 @@ body {
     background-color: black;
 }
 
-hr {
-    border: 0;
-    height: 2px;
-    background-image: linear-gradient(to right, #ffa9e5 0%, #b9238c 66%) !important;
+a {
+    text-decoration: none !important;
 }
 
 .titre-header {
+    animation-delay: 0.2s;
     background-image: linear-gradient(to right, #ffa9e5 0%, #b9238c 33%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -48,51 +47,400 @@ input[type="text"] {
     margin-right: 15px;
 }
 
-input[type="text"]:focus {
-    border: 2px solid #f0f0f0!important;
+.input-search {
+    animation-delay: 1.2s;
 }
 
-button[type="submit"] {
+.btn-search {
+    animation-delay: 1.6s;
+    animation-duration: 0.8s;
+}
+
+.btn-login {
+    animation-delay: 1.8s;
+    animation-duration: 0.8s;
+}
+
+input[type="text"]:focus {
+    border: 2px solid #f0f0f0 !important;
+}
+
+button[type="submit"], button[type="button"] {
     border: none;
     background-color: #000;
     color: #f0f0f0;
     margin: 5px;
 }
 
-button[type="submit"] i {
+button[type="submit"] i, button[type="button"] i {
     color: #f0f0f0;
     font-size: 24px;
     transition: ease-out 0.2s;
 
 }
 
-button[type="submit"]:hover i {
+button[type="submit"]:hover i, button[type="button"]:hover i {
     color: #b9238c;
 }
 
-ul {
+.navbar-header {
     list-style-type: none;
     display: flex;
     justify-content: space-evenly;
 }
 
-li {
+.navbar-header li {
     display: inline;
     font-size: 1em;
-    font-family: 'Prosto One';
-    
+    font-family: 'Prosto One', cursive;
 }
 
-li a {
+.navbar-header li:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.navbar-header li:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.navbar-header li:nth-child(3) {
+    animation-delay: 0.7s;
+}
+
+.navbar-header li:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.navbar-header li:nth-child(5) {
+    animation-delay: 1s;
+}
+
+.navbar-header li:nth-child(6) {
+    animation-delay: 1.2s;
+}
+
+.navbar-header li a {
     padding: 10px 50px;
     color: #f0f0f0;
-    text-decoration: none;
     border: 2px solid #000;
     transition: ease-out 0.2s;
 }
 
-li a:hover {
+.navbar-header li a:hover {
+    color: #f0f0f0;
+    border: 2px solid #414141 !important;
+}
+
+.navbar-header li a:active {
     color: #f0f0f0;
     text-decoration: none;
-    border: 2px solid #414141!important;
+    border: 2px solid #414141 !important;
+}
+
+.navbar-header li a:visited {
+    color: #f0f0f0;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background-color: #000;
+}
+
+.hr-bottom {
+    background-image: linear-gradient(to right, #ffa9e5 0%, #b9238c 66%) !important;
+}
+
+.hr-top::before {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    animation-duration: 2s;
+    animation-name: hr-top-animation;
+    background-image: linear-gradient(to right, #ffa9e5 0%, #b9238c 66%) !important;
+}
+
+@keyframes hr-top-animation {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.titre-footer {
+    background-image: linear-gradient(to right, #ffa9e5 0%, #b9238c 33%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    margin-bottom: 10px;
+    letter-spacing: 0.3em;
+    padding-top: 10px;
+    font-size: 1em;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.texte-footer {
+    color: #f0f0f0;
+    font-size: 0.8em;
+    font-family: 'Prosto One' cursive;
+    margin: 0;
+    margin-bottom: 10px;
+    letter-spacing: 0.3em;
+
+}
+
+.footer-log {
+    animation-delay: 1.5s;
+}
+
+footer {
+    text-align: center;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer li {
+    font-size: 0.8em;
+    font-family: 'Prosto One', cursive;
+    margin: 12px;
+}
+
+footer li a {
+    color: #f0f0f0;
+    padding: 5px 10px;
+    border: 2px solid #000;
+    transition: ease-out 0.2s;
+}
+
+footer li a:hover {
+    color: #ffa9e5;
+    border: 2px solid #414141 !important;
+}
+
+footer li a:active {
+    color: #f0f0f0;
+    border: 2px solid #414141 !important;
+}
+
+input[type="submit"] {
+    border: none;
+    background-color: #000;
+    color: #f0f0f0;
+    margin: 5px;
+    border: 2px solid #414141 !important;
+    transition: ease-out 0.2s;
+    padding: 5px 10px;
+}
+
+input[type="submit"]:hover {
+    color: #ffa9e5;
+    border: 2px solid #f0f0f0 !important;
+}
+
+input[type="email"] {
+    border-style: none;
+    color: #f0f0f0;
+    font-size: 1em;
+    padding: 5px 10px;
+    background-color: transparent;
+    border: 2px solid #414141;
+    outline: #000;
+    width: max-content;
+}
+
+input[type="email"]:focus {
+    border: 2px solid #f0f0f0 !important;
+}
+
+.card {
+    border: none;
+    background-color: #202020;
+    transition: ease-out 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.20);
+    transition: ease-out 0.2s;
+}
+
+.card-img-top {
+    height: 66%!important;
+}
+
+.card-body {
+    height: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.card-title {
+    color: #f0f0f0;
+    font-size: 0.9em;
+    font-family: 'Prosto One', cursive;
+}
+
+.titre-jeu {
+    color: #f0f0f0;
+    font-size: 2.3em;
+    font-family: 'Prosto One', cursive;
+    letter-spacing: 0.3em;
+    transition: ease-out 0.2s;
+    animation-delay: 0.7s;
+}
+
+.titre-jeu:hover {
+    color: #ffa9e5;
+    transition: ease-out 0.2s;
+}
+
+.description-jeu {
+    color: #f0f0f0;
+    font-size: 1.2em;
+    font-family: 'Prosto One', cursive;
+    letter-spacing: 0.3em;
+    text-align: center;
+    animation-delay: 0.9s;
+}
+
+.date-jeu {
+    color: #f0f0f0;
+    font-size: 0.8em;
+    letter-spacing: 0.1em;
+    text-align: center;
+    border: 2px solid #414141;
+    padding: 5px 10px;
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    animation-delay: 1s;
+}
+
+.div-buy {
+    width: 66%!important;
+}
+
+.btn-buy {
+    border: none;
+    background-color: #000;
+    color: #f0f0f0;
+    margin: 5px;
+    border: 2px solid #414141 !important;
+    transition: ease-out 0.2s;
+    padding: 5px 10px;
+    font-family: 'Press Start 2P', cursive;
+    animation-delay: 1.1s;
+}
+
+.btn-buy:hover {
+    color: #ffa9e5;
+    border: 2px solid #f0f0f0 !important;
+}
+
+.row-card, .row-card div {
+    animation-delay: 0.5s;
+}
+
+.row-card:nth-child(2), .row-card div:nth-child(2) {
+    animation-delay: 0.7s;
+}
+
+.row-card:nth-child(3), .row-card div:nth-child(3) {
+    animation-delay: 0.9s;
+}
+
+.row-card:nth-child(4), .row-card div:nth-child(4) {
+    animation-delay: 1.1s;
+}
+
+.row-card:nth-child(5), .row-card div:nth-child(5) {
+    animation-delay: 1.3s;
+}
+
+.img-card {
+    animation-delay: 0.5s;
+    animation-duration: 600ms;
+}
+
+.titre-inscription, .titre-connexion {
+    color: #f0f0f0;
+    font-size: 2em;
+    font-family: 'Prosto One', cursive;
+    letter-spacing: 0.3em;
+}
+
+.form-inscription {
+    background-color: #000;
+    border: 2px solid #414141;
+    border-radius: 0;
+    color: #f0f0f0!important;
+    font-size: 1em;
+}
+
+.form-inscription:focus {
+    background-color: #000;
+}
+
+.form-connexion input {
+    border: none;
+    background-color: #000;
+    color: #f0f0f0!important;
+    margin: 5px;
+    border: 2px solid #414141 !important;
+    padding: 5px 10px;
+    font-size: 1em;
+}
+
+.form-connexion input:focus {
+    background-color: #000;
+}
+
+
+section label {
+    color: #f0f0f0!important;
+    font-size: 1em;
+    font-family: 'Prosto One', cursive;
+    letter-spacing: 0.3em;
+}
+
+.btn-inscription, .btn-connexion {
+    margin-top: 40px!important;
+    border: none;
+    background-color: #000;
+    color: #f0f0f0;
+    margin: 5px;
+    border: 2px solid #414141 !important;
+    transition: ease-out 0.2s;
+    padding: 5px 10px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8em;
+}
+
+.btn-inscription:hover, .btn-connexion:hover {
+    color: #ffa9e5;
+    border: 2px solid #f0f0f0 !important;
+}
+
+.anime-inscription, .anime-connexion {
+    animation-delay: 0.4s;
+}
+
+.anime-inscription:nth-child(2), .anime-connexion:nth-child(2) {
+    animation-delay: 0.8s;
+}
+
+.anime-inscription:nth-child(3), .anime-connexion:nth-child(3) {
+    animation-delay: 1.1s;
+}
+
+.anime-inscription li {
+    color: #ffa9e5
 }
